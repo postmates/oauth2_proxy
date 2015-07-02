@@ -23,115 +23,59 @@ func getTemplates() *template.Template {
 <!DOCTYPE html>
 <html lang="en" charset="utf-8">
 <head>
-	<title>Sign In</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<style>
-	body {
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-		font-size: 14px;
-		line-height: 1.42857143;
-		color: #333;
-		background: #f0f0f0;
-	}
-	.signin {
-		display:block;
-		margin:20px auto;
-		max-width:400px;
-		background: #fff;
-		border:1px solid #ccc;
-		border-radius: 10px;
-		padding: 20px;
-	}
-	.center {
-		text-align:center;
-	}
-	.btn {
-		color: #fff;
-		background-color: #428bca;
-		border: 1px solid #357ebd;
-		-webkit-border-radius: 4;
-		-moz-border-radius: 4;
-		border-radius: 4px;
-		font-size: 14px;
-		padding: 6px 12px;
-	  	text-decoration: none;
-		cursor: pointer;
-	}
-
-	.btn:hover {
-		background-color: #3071a9;
-		border-color: #285e8e;
-		ext-decoration: none;
-	}
-	label {
-		display: inline-block;
-		max-width: 100%;
-		margin-bottom: 5px;
-		font-weight: 700;
-	}
-	input {
-		display: block;
-		width: 100%;
-		height: 34px;
-		padding: 6px 12px;
-		font-size: 14px;
-		line-height: 1.42857143;
-		color: #555;
-		background-color: #fff;
-		background-image: none;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-		box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-		-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-		-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-		transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-		margin:0;
-		box-sizing: border-box;
-	}
-	footer {
-		display:block;
-		font-size:10px;
-		color:#aaa;
-		text-align:center;
-		margin-bottom:10px;
-	}
-	footer a {
-		display:inline-block;
-		height:25px;
-		line-height:25px;
-		color:#aaa;
-		text-decoration:underline;
-	}
-	footer a:hover {
-		color:#aaa;
-	}
-	</style>
+  <title>CoreOS Edge Security</title>
+  <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="//storage.googleapis.com/assets.coreos.systems/uberproxy/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+  body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.75);
+    background: url(//storage.googleapis.com/assets.coreos.systems/uberproxy/hexagons.png),linear-gradient(30deg,#2276ad,#6ec654);
+  }
+  .signin {
+    background-image: url(//storage.googleapis.com/assets.coreos.systems/uberproxy/border.png);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+    width: 450px;
+    border-radius: 8px;
+    padding: 25px 25px 10px 25px;
+    text-align: center;
+  }
+  .btn {
+    width: 165px;
+    height: 36px;
+    border: 0px;
+    cursor: pointer;
+    outline: 0;
+  }
+  p { margin: 0px; }
+  p.bold { font-weight: 700; }
+  p.message { margin-bottom: 20px; }
+  p.logo img { width: 40%; height: 40%; }
+  p.footer { color: #888; font-size: 12px; margin-top: 10px; }
+  p.footer a { color: inherit; }
+  </style>
 </head>
 <body>
 	<div class="signin center">
 	<form method="GET" action="{{.ProxyPrefix}}/start">
 	<input type="hidden" name="rd" value="{{.Redirect}}">
-	{{ if .SignInMessage }}
-	<p>{{.SignInMessage}}</p>
-	{{ end}}
-	<button type="submit" class="btn">Sign in with a {{.ProviderName}} Account</button><br/>
-	</form>
-	</div>
-
-	{{ if .CustomLogin }}
-	<div class="signin">
-	<form method="POST" action="{{.ProxyPrefix}}/sign_in">
-		<input type="hidden" name="rd" value="{{.Redirect}}">
-		<label for="username">Username:</label><input type="text" name="username" id="username" size="10"><br/>
-		<label for="password">Password:</label><input type="password" name="password" id="password" size="10"><br/>
-		<button type="submit" class="btn">Sign In</button>
-	</form>
-	</div>
-	{{ end }}
-	<footer>
-	Secured with <a href="https://github.com/bitly/oauth2_proxy#oauth2_proxy">OAuth2 Proxy</a> version {{.Version}}
-	</footer>
+  <p class="logo"><img src="//storage.googleapis.com/assets.coreos.systems/uberproxy/coreos-wordmark-horiz-color.png"></p>
+      <p class="bold">&#x261d; Ah ah ah! You didn't say the magic word!</p>
+      <p class="message">Access to this system is restricted to CoreOS employees.</p>
+      <input type="image" src="//storage.googleapis.com/assets.coreos.systems/uberproxy/Blue_signin_Long_normal_20dp_v3.png" class="btn">
+      <p class="footer">Please contact infra-team with any issues or questions. <a href="https://coreos.com">Return to safety.</a></p>
+    </form>
+  </div>
 </body>
 </html>
 {{end}}`)
@@ -143,14 +87,55 @@ func getTemplates() *template.Template {
 <!DOCTYPE html>
 <html lang="en" charset="utf-8">
 <head>
-	<title>{{.Title}}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>CoreOS Edge Security</title>
+  <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="//storage.googleapis.com/assets.coreos.systems/uberproxy/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+  body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.75);
+    background: url(//storage.googleapis.com/assets.coreos.systems/uberproxy/hexagons.png),linear-gradient(30deg,#2276ad,#6ec654);
+  }
+  .signin {
+    background-image: url(//storage.googleapis.com/assets.coreos.systems/uberproxy/border.png);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+    width: 450px;
+    border-radius: 8px;
+    padding: 25px 25px 10px 25px;
+    text-align: center;
+  }
+  .btn {
+    width: 165px;
+    height: 36px;
+    border: 0px;
+    cursor: pointer;
+    outline: 0;
+  }
+  p { margin: 0px; }
+  p.bold { font-weight: 700; }
+  p.message { margin-bottom: 20px; }
+  p.logo img { width: 40%; height: 40%; }
+  p.footer { color: #888; font-size: 12px; margin-top: 10px; }
+  p.footer a { color: inherit; }
+  </style>
 </head>
 <body>
-	<h2>{{.Title}}</h2>
-	<p>{{.Message}}</p>
-	<hr>
-	<p><a href="{{.ProxyPrefix}}/sign_in">Sign In</a></p>
+  <div class="signin center">
+  <p class="logo"><img src="//storage.googleapis.com/assets.coreos.systems/uberproxy/coreos-wordmark-horiz-color.png"></p>
+  <p class="bold">{{.Title}}</p>
+  <p class="message">{{.Message}}</p>
+  <p class="footer">Please contact infra-team with any issues or questions. <a href="{{.ProxyPrefix}}/sign_in">Return to sign in.</a></p>
+  </div>
 </body>
 </html>{{end}}`)
 	if err != nil {
