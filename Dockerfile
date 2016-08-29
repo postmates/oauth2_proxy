@@ -1,6 +1,7 @@
-FROM golang:1.5.2
+FROM golang:1.7-alpine
 MAINTAINER colin.hom@coreos.com
 
+RUN apk add --no-cache git
 RUN go get github.com/tools/godep
 
 ADD . $GOPATH/src/github.com/bitly/oauth2_proxy
