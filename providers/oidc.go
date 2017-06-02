@@ -23,6 +23,7 @@ func NewOIDCProvider(p *ProviderData) *OIDCProvider {
 func (p *OIDCProvider) Redeem(redirectURL, code string) (s *SessionState, err error) {
 	ctx := context.Background()
 	c := oauth2.Config{
+		RedirectURL:  redirectURL,
 		ClientID:     p.ClientID,
 		ClientSecret: p.ClientSecret,
 		Endpoint: oauth2.Endpoint{
